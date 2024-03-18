@@ -15,17 +15,3 @@ export const sortData = (data, sortBy, sortOrder) => {
     );
   }
 };
-
-export const computeStats = (data) => {
-  const cumputeResult = data.reduce((accumulator, currentSinger) => {
-    if (currentSinger.facts.yearOfBirth >= 1970 && currentSinger.facts.yearOfBirth <= 1990) {
-      return accumulator + 1;
-    } else {
-      return accumulator;
-    }
-  }, 0);
-  
-  const percentage = (cumputeResult / data.length) * 100;
-
-  return percentage.toFixed(2);
-};
