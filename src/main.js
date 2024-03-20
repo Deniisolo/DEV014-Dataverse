@@ -28,14 +28,13 @@ mainGenre.addEventListener("change", (e) => {
 
 sort.addEventListener("change", (e) => {
   const optionSort = e.target.value;
-  if(filteredData.length > 0) {
-   sortedData= sortData(filteredData, "yearOfBirth", optionSort);
+  if (filteredData.length > 0) {
+    sortedData = sortData(filteredData, "yearOfBirth", optionSort);
     container.appendChild(renderItems(sortedData));
   } else {
     sortedData = sortData(data, "yearOfBirth", optionSort);
-  container.appendChild(renderItems(sortedData));
+    container.appendChild(renderItems(sortedData));
   }
-  
 });
 
 compute.addEventListener("click", function () {
@@ -54,9 +53,8 @@ compute.addEventListener("click", function () {
 
 cleanButton.addEventListener("click", () => {
   container.appendChild(renderItems(data));
-  changeCompute.innerHTML = ""; 
+  changeCompute.innerHTML = "";
   mainGenre.options[0].selected = true;
   sort.options[0].selected = true;
-  filteredData = []; 
+  filteredData = [];
 });
-
