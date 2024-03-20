@@ -15,25 +15,27 @@ const changeCompute = document.getElementById("conteinerCompute");
 changeCompute.style.display = "none";
 const cleanButton = document.getElementById("buttonClear");
 const sort = document.querySelector("#sort");
-
+let filteredData;
+let sortedData;
 container.appendChild(renderItems(data));
 
 //eventos
 mainGenre.addEventListener("change", (e) => {
   const optionValue = e.target.value;
-  const filterResult = filterData(data, "mainGenre", optionValue);
-  container.appendChild(renderItems(filterResult));
-
-  sort.addEventListener("change", (e) => {
-    const optionSort = e.target.value;
-    const sortResult = sortData(filterResult, "yearOfBirth", optionSort);
-    container.appendChild(renderItems(sortResult));
-  });
+  filteredData = filterData(data, "mainGenre", optionValue);
+  container.appendChild(renderItems(filteredData));
 });
+
 sort.addEventListener("change", (e) => {
   const optionSort = e.target.value;
-  const sortResult = sortData(data, "yearOfBirth", optionSort);
-  container.appendChild(renderItems(sortResult));
+  if(filteredData.length > 0) {
+   sortedData= sortData(filteredData, "yearOfBirth", optionSort);
+    container.appendChild(renderItems(sortedData));
+  } else {
+    sortedData = sortData(data, "yearOfBirth", optionSort);
+  container.appendChild(renderItems(sortedData));
+  }
+  
 });
 
 compute.addEventListener("click", function () {
@@ -52,7 +54,9 @@ compute.addEventListener("click", function () {
 
 cleanButton.addEventListener("click", () => {
   container.appendChild(renderItems(data));
-  changeCompute.innerHTML = "";
+  changeCompute.innerHTML = ""; 
   mainGenre.options[0].selected = true;
   sort.options[0].selected = true;
+  filteredData = []; 
 });
+
