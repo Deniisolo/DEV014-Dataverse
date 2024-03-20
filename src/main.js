@@ -31,11 +31,9 @@ sort.addEventListener("change", (e) => {
   if (filteredData.length > 0) {
     sortedData = sortData(filteredData, "yearOfBirth", optionSort);
     container.appendChild(renderItems(sortedData));
-    console.log("hay filtro");
   } else {
     sortedData = sortData(data, "yearOfBirth", optionSort);
     container.appendChild(renderItems(sortedData));
-    console.log("no hay filtros");
   }
 });
 
