@@ -15,7 +15,7 @@ const changeCompute = document.getElementById("conteinerCompute");
 changeCompute.style.display = "none";
 const cleanButton = document.getElementById("buttonClear");
 const sort = document.querySelector("#sort");
-let filteredData;
+let filteredData = [];
 let sortedData;
 container.appendChild(renderItems(data));
 
@@ -31,9 +31,11 @@ sort.addEventListener("change", (e) => {
   if (filteredData.length > 0) {
     sortedData = sortData(filteredData, "yearOfBirth", optionSort);
     container.appendChild(renderItems(sortedData));
+    console.log("hay filtro");
   } else {
     sortedData = sortData(data, "yearOfBirth", optionSort);
     container.appendChild(renderItems(sortedData));
+    console.log("no hay filtros");
   }
 });
 
